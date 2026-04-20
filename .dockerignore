@@ -1,0 +1,11 @@
+/target
+/.git
+/.github
+.env
+.env.example
+.DS_Store
+/.idea
+/.vscode
+README.md
+CLAUDE.md
+LICENSE
