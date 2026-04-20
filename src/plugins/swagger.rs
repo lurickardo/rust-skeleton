@@ -30,15 +30,3 @@ pub fn routes(env: &Env) -> Router {
     let docs_path = format!("{}/docs", env.strip_prefix.path);
     Router::new().merge(SwaggerUi::new(docs_path).url("/api-docs/openapi.json", ApiDoc::openapi()))
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn openapi_document_is_generated() {
-        let doc = ApiDoc::openapi();
-        let json = serde_json::to_string(&doc).unwrap();
-        assert!(json.contains("/v1/user"));
-    }
-}

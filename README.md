@@ -45,7 +45,9 @@ cargo build
 ## Running the app
 
 ```bash
-# development (hot reload with cargo-watch, optional)
+$ cargo run
+
+# OR development (hot reload with cargo-watch, optional)
 $ cargo watch -x run
 
 # production

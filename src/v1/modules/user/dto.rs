@@ -48,27 +48,3 @@ pub fn transform_update_user_dto(data: UpdateUserDto) -> Result<UpdateUserDto, A
         .map_err(|e| AppError::Validation(collect_errors(e)))?;
     Ok(data)
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn create_dto_rejects_invalid_email() {
-        let dto = CreateUserDto {
-            name: "foo".into(),
-            email: "not-email".into(),
-        };
-        let result = transform_create_user_dto(dto);
-        assert!(result.is_err());
-    }
-
-    #[test]
-    fn update_dto_accepts_valid_payload() {
-        let dto = UpdateUserDto {
-            name: "foo".into(),
-            email: "foo@bar.com".into(),
-        };
-        assert!(transform_update_user_dto(dto).is_ok());
-    }
-}

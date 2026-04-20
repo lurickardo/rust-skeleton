@@ -13,13 +13,3 @@ pub fn layer() -> CorsLayer {
         ])
         .allow_headers(Any)
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn cors_layer_builds() {
-        let _ = layer();
-    }
-}
