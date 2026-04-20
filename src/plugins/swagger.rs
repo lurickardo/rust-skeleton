@@ -27,6 +27,9 @@ use crate::v1::modules::user;
 pub struct ApiDoc;
 
 pub fn routes(env: &Env) -> Router {
+    let mut doc = ApiDoc::openapi();
+    doc.servers = Some(vec![utoipa::openapi::Server::new(&env.strip_prefix.path)]);
+
     let docs_path = format!("{}/docs", env.strip_prefix.path);
-    Router::new().merge(SwaggerUi::new(docs_path).url("/api-docs/openapi.json", ApiDoc::openapi()))
+    Router::new().merge(SwaggerUi::new(docs_path).url("/api-docs/openapi.json", doc))
 }
